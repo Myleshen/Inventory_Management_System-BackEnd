@@ -5,19 +5,17 @@ meta {
 }
 
 post {
-  url: http://localhost:8080/products
+  url: {{IMSURL}}/products
   body: json
   auth: none
 }
 
 body:json {
   {
-    "id": 1,
     "productCode": "PRODUCT_001",
     "price": 10,
     "cgstPercentage": 5,
     "sgstPercentage": 5,
-    "qty": "10",
-    "category": "TEST"
+    "qty": "10"
   }
 }

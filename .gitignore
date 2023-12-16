@@ -35,3 +35,4 @@ build/
 .env
 run.sh
 compose.yaml
+.run/**/*

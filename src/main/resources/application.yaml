@@ -1,9 +1,0 @@
-spring:
-  datasource:
-    username: myuser
-    password: secret
-    url: jdbc:postgresql://localhost:5432/postgres
-
-#logging:
-#  level:
-#    root: debug

@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ims
+    username: user_ims
+    password: password_ims
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    generate-ddl: true
+    show-sql: true
+
+#logging:
+#  level:
+#    root: debug
