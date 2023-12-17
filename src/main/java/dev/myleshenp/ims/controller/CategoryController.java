@@ -28,6 +28,11 @@ public class CategoryController {
        return categoryService.getAllCategories();
     }
 
+    @GetMapping("/{id}")
+    public CategoryDTO getCategoryById(@PathVariable Long id) throws Exception {
+        return categoryService.getCategoryById(id);
+    }
+
     @PutMapping("/{id}")
     public CategoryDTO updateCategoryById(@PathVariable Long id, @RequestBody Category category) throws Exception {
         return categoryService.updateCategoryById(id, category);

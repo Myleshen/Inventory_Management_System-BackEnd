@@ -39,4 +39,12 @@ public class CategoryService {
     public void deleteCategoryById(Long id) {
         categoryRepository.deleteById(id);
     }
+
+    public CategoryDTO getCategoryById(Long id) throws Exception {
+        var category = categoryRepository.findById(id);
+        if (category.isEmpty()) {
+            throw new Exception("Category with ID: " + id + " not found");
+        }
+        return categoryMapper.entityToDTO(category.get());
+    }
 }
