@@ -17,11 +17,26 @@ public class CategoryService {
     private final CategoryRepository categoryRepository;
     private final CategoryMapper categoryMapper;
 
-    public Category saveCategory(Category category) {
-        return categoryRepository.save(category);
+    public CategoryDTO saveCategory(Category category) {
+        return categoryMapper.entityToDTO(categoryRepository.save(category));
     }
 
     public List<CategoryDTO> getAllCategories() {
         return categoryRepository.findAll().stream().map(categoryMapper::entityToDTO).toList();
+    }
+
+    public CategoryDTO updateCategoryById(Long id, Category category) throws Exception {
+        var oldCategory = categoryRepository.findById(id);
+        if (oldCategory.isEmpty()) {
+            throw new Exception("Category Not Found");
+        }
+        categoryRepository.deleteById(id);
+        category.setId(id);
+        category.setCreatedDate(oldCategory.get().getCreatedDate());
+        return categoryMapper.entityToDTO(categoryRepository.save(category));
+    }
+
+    public void deleteCategoryById(Long id) {
+        categoryRepository.deleteById(id);
     }
 }
